@@ -12,10 +12,7 @@ from termcolor import colored, cprint
 
 def main():
     print("\n")
-    print(colored('Nautilus - minimal Kubernetes CLI', 'green', attrs=['bold', 'underline']))
-    print(colored('Author: @sheikyerbouti', 'white'))
-    print(colored('Version: 1.0.0', 'white'))
-    print(colored('Usage: nautilus [options]', 'white'))
+    print("Nautilus - minimal Kubernetes CLI")
     print("\n")
 
 if __name__ == "__main__":
