@@ -1,2 +1,2 @@
 # nautilus
-CLI -kubectl like- for browsing a Kubernetes cluster. 
+Minimal command line interface "kubectl kike" for interacting with Kubernetes clusters. 
