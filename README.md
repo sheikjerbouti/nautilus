@@ -1,2 +1,2 @@
 # nautilus
-Minimal command line interface "kubectl kike" for interacting with Kubernetes clusters. 
+Minimal command line interface "kubectl like" for interacting with Kubernetes clusters. 
