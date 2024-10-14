@@ -11,7 +11,7 @@ Minimal command line interface "kubectl like" for interacting with Kubernetes cl
 - pip
 - pip install kubernetes
 
-create a venv and activate it
+Is highly suggested to create a venv and activate it
 
 ```bash
 python3 -m venv .venv
