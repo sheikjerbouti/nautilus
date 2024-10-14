@@ -70,6 +70,19 @@ class DescribeK8s:
         apiserver = self.v1.api_client.configuration.host
         return f"Kubernetes control plane is running at {apiserver}"
 
+    def print_api_versions(self):
+        """Print API versions information."""
+        try:
+            api_client = client.ApiClient()
+            version_api = client.VersionApi(api_client)
+            api_versions = version_api.get_code()
+            print("Kubernetes API Versions:")
+            print(f"Major: {api_versions.major}")
+            print(f"Minor: {api_versions.minor}")
+            print(f"Platform: {api_versions.platform}")
+        except client.ApiException as e:
+            print(f"Error getting API versions: {e}")
+            
     def get_kube_dns_info(self):
         """Get KubeDNS service information."""
         try:
