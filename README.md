@@ -6,12 +6,11 @@ Minimal command line interface "kubectl like" for interacting with Kubernetes cl
 
 ## pre-requisites
 
-- python 3.10+
-- kind 
-- pip
-- pip install kubernetes
+- Python 3.x
+- Kubernetes Python client library (`kubernetes`)
+- PyYAML library (pyyaml)
 
-Is highly suggested to create a venv and activate it
+Is highly suggested to create a virtual environment (aka venv)  and activate it, before experimenting witg this tool. 
 
 ```bash
 python3 -m venv .venv
