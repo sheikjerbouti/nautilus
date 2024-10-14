@@ -141,6 +141,8 @@ def main():
         k8s_cluster.print_api_versions()
     elif args.nodes:
         k8s_cluster.print_nodes_info()
+    else:
+        print("No arguments provided. Use --help for more information.")
 
 if __name__ == "__main__":
     main()
