@@ -1,5 +1,10 @@
+![nautilus](images/output.jpg)
+
+=============
+
 # nautilus
-Minimal command line interface "kubectl like" for interacting with Kubernetes clusters. 
+Minimal command line interface "kubectl like" for interacting with Kubernetes clusters. nautilus is using and leveraging the Python Kubernetes API. It uses Kind for test
+and navigate different clusters for test and fun. 
 
 ## pre-requisites
 
@@ -16,3 +21,5 @@ source .venv/bin/activate
 ```
 
 ## installation
+
+Install kind and create a cluster. 
