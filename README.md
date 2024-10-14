@@ -22,9 +22,9 @@ Install kind and create a cluster.
 
 ## Documentation and references
 
-For more information, refer to the following resources:
+For more information, browse the following links:
 
-- Kubernetes Documentation  : <https://kubernetes.io/docs/home/>
+- "The" Kubernetes Documentation  : <https://kubernetes.io/docs/home/>
 - Kubernetes v1 API Reference  : <https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.24/>
 - Kubernetes Python Client : : <https://github.com/kubernetes-client/python>
 
