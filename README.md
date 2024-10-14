@@ -16,9 +16,23 @@ python3 -m venv .venv
 source .venv/bin/activate
 ```
 
-## installation
+## How to play with this tool and Kind 
 
-Install kind and create a cluster.
+For example, install kind in your  Linux box:
+```sh
+curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.24.0/kind-linux-amd64
+chmod +x ./kind
+sudo mv ./kind /usr/local/bin/kind
+```
+Create a cluster and test the commands
+```sh
+kind create cluster --name my-cluster
+```
+Test the nodes coomnd , running 
+```sh
+python3 nautilus.py --nodes
+```
+
 
 ## Documentation and references
 
