@@ -16,7 +16,7 @@ python3 -m venv .venv
 source .venv/bin/activate
 ```
 
-## How to play with this tool and Kind 
+## How to play with nautilus and Kind 
 
 In order to test basic commannds and interact with Kubernetes clusters, we can create a simple cluster using Kind, available at the following address <https://kind.sigs.k8s.io/>.
 
