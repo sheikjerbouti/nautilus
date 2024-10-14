@@ -1,4 +1,4 @@
-<img src="images/nautilus.jpg" alt="nautilus logo" width="300" height="200">
+<img src="images/nautilus.jpg" alt="nautilus logo" width="200" height="200">
 =============
 
 # nautilus
