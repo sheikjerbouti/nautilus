@@ -107,9 +107,8 @@ class DescribeK8s:
 
 
 def main():
-    
     print("\n")
-    print("Nautilus - minimal Kubernetes CLI")
+    print(colored("Nautilus - minimal Kubernetes CLI", "green"))    
     print("\n")
     
     
