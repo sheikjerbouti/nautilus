@@ -9,41 +9,12 @@ from kubernetes.config.config_exception import ConfigException
 from termcolor import colored, cprint
 
 class DescribeK8s:
-    """
-    A class to interact with Kubernetes resources within a specified namespace.
-
-    Attributes:
-    -----------
-    namespace : str
-        The namespace to interact with in the Kubernetes cluster.
-    config : object
-        The Kubernetes configuration loaded from the kubeconfig file.
-    v1 : CoreV1Api
-        The CoreV1Api instance to interact with core Kubernetes resources.
-
-    Methods:
-    --------
-    __init__(namespace):
-        Initializes the DescribeK8s object with the given namespace.
-    """
-
     def __init__(self, namespace):
         self.config = config.load_kube_config()    
         #self.namespace = namespace
         self.v1 = client.CoreV1Api()
         
     def get_cluster_info(self):
-        """
-        Retrieve and print information about the Kubernetes cluster.
-
-        This method fetches the API resources available in the cluster and prints
-        the number of resources. It also prints the URLs for the KubeDNS service
-        and the Kubernetes control plane.
-
-        Returns:
-            None
-        """
-        
         api_resources = self.get_api_resources()
         if api_resources:
             print(f"API Resources: {len(api_resources.resources)}")
@@ -54,7 +25,6 @@ class DescribeK8s:
         print(f"Kubernetes control plane is running at {host}")
 
     def set_namespace(self, namespace):
-        """Set the namespace for the DescribeK8s object."""
         self.namespace = namespace
 
     def get_api_resources(self):
@@ -66,12 +36,10 @@ class DescribeK8s:
             return None
 
     def get_api_server(self):
-        """Get the API server information."""
         apiserver = self.v1.api_client.configuration.host
         return f"Kubernetes control plane is running at {apiserver}"
 
     def print_api_versions(self):
-        """Print API versions information."""
         try:
             api_client = client.ApiClient()
             version_api = client.VersionApi(api_client)
@@ -84,7 +52,6 @@ class DescribeK8s:
             print(f"Error getting API versions: {e}")
             
     def get_kube_dns_info(self):
-        """Get KubeDNS service information."""
         try:
             return self.v1.list_namespaced_service(self.namespace)
         except client.ApiException as e:
@@ -92,11 +59,9 @@ class DescribeK8s:
             return None
         
     def set_namespace(self, namespace):
-        """Set the namespace for the DescribeK8s object."""
         self.namespace = namespace
 
     def get_api_resources(self):
-        """Get API resources information."""
         try:
             return self.v1.get_api_resources()
         except client.ApiException as e:
@@ -104,12 +69,10 @@ class DescribeK8s:
             return None
 
     def get_api_server(self):
-        """Get the API server information."""
         apiserver = self.v1.api_client.configuration.host
         return f"Kubernetes control plane is running at {apiserver}"
     
     def get_nodes(self):
-        """Get information about all nodes in the cluster."""
         try:
             nodes = self.v1.list_node()
             return nodes.items
@@ -119,7 +82,6 @@ class DescribeK8s:
 
 
     def print_nodes_info(self):
-        """Print information about all nodes in the cluster."""
         nodes = self.get_nodes()
         if nodes:
             print("Cluster Nodes:")
@@ -139,7 +101,6 @@ class DescribeK8s:
             print("No nodes found or error occurred while fetching nodes.")
 
     def get_kube_dns_info(self):
-        """Get KubeDNS service information."""
         try:
             return self.v1.list_namespaced_service(self.namespace)
         except client.ApiException as e:
