@@ -35,8 +35,21 @@ Test the nodes coomnd , running
 ```sh
 nautilus.py --nodes
 ```
+## Basic commands implemented 
+```sh
+usage: nautilus.py [-h] [--namespace NAMESPACE] [--cluster-info] [--api-versions] [--nodes]
 
+Describe Kubernetes cluster information
 
+options:
+  -h, --help            show this help message and exit
+  --namespace NAMESPACE
+                        Set the namespace to get the information
+  --cluster-info, --cluster
+                        Print the cluster information
+  --api-versions        Print the API versions
+  --nodes               Print information about all nodes
+```
 ## Documentation and references
 
 For more information, browse the following links:
