@@ -107,6 +107,36 @@ class DescribeK8s:
         """Get the API server information."""
         apiserver = self.v1.api_client.configuration.host
         return f"Kubernetes control plane is running at {apiserver}"
+    
+    def get_nodes(self):
+        """Get information about all nodes in the cluster."""
+        try:
+            nodes = self.v1.list_node()
+            return nodes.items
+        except client.ApiException as e:
+            print(f"Error getting nodes: {e}")
+            return None
+
+
+    def print_nodes_info(self):
+        """Print information about all nodes in the cluster."""
+        nodes = self.get_nodes()
+        if nodes:
+            print("Cluster Nodes:")
+            for node in nodes:
+                print(f"  Name: {node.metadata.name}")
+                print(f"    Status: {node.status.phase}")
+                print(
+                    f"    Kubernetes Version: {node.status.node_info.kubelet_version}")
+                print(f"    OS Image: {node.status.node_info.os_image}")
+                print(
+                    f"    Container Runtime: {node.status.node_info.container_runtime_version}")
+                print("    Addresses:")
+                for address in node.status.addresses:
+                    print(f"      {address.type}: {address.address}")
+                print()
+        else:
+            print("No nodes found or error occurred while fetching nodes.")
 
     def get_kube_dns_info(self):
         """Get KubeDNS service information."""
