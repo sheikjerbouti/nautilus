@@ -1,8 +1,7 @@
 <img src="images/nautilus.jpg" alt="nautilus logo" width="200" height="200">
-===========================================================================
 
 # nautilus
-Minimal command line interface "kubectl like" for interacting with Kubernetes clusters.
+Minimal command line interface "kubectl like" for interacting with Kubernetes clusters. A basic exercise for obtain a minimal console for interact with Kubernetes clusters and experimenting with basic operation ( load balancer creation , network , availability, etc ..)
 
 ## pre-requisites
 
