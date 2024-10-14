@@ -1,5 +1,5 @@
 <img src="images/nautilus.jpg" alt="nautilus logo" width="200" height="200">
--+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
+===========================================================================
 
 # nautilus
 Minimal command line interface "kubectl like" for interacting with Kubernetes clusters. nautilus is using and leveraging the Python Kubernetes API. It uses Kind for test
