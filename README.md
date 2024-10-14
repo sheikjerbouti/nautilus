@@ -18,19 +18,22 @@ source .venv/bin/activate
 
 ## How to play with this tool and Kind 
 
-In order to test basic commannds and interact with Kubernetes clusters, you can create a simple test cluster with Kind. Here how:
+In order to test basic commannds and interact with Kubernetes clusters, we can create a simple cluster using Kind, available at the following address <https://kind.sigs.k8s.io/>.
+
 ```sh
+#install Kind.
 curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.24.0/kind-linux-amd64
 chmod +x ./kind
 sudo mv ./kind /usr/local/bin/kind
 ```
 
 ```sh
+#create a test cluster with kind
 kind create cluster --name my-cluster
 ```
 Test the nodes coomnd , running 
 ```sh
-python3 nautilus.py --nodes
+nautilus.py --nodes
 ```
 
 
