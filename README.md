@@ -18,13 +18,13 @@ source .venv/bin/activate
 
 ## How to play with this tool and Kind 
 
-For example, install kind in your  Linux box:
+In order to test basic commannds and interact with Kubernetes clusters, you can create a simple test cluster with Kind. Here how:
 ```sh
 curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.24.0/kind-linux-amd64
 chmod +x ./kind
 sudo mv ./kind /usr/local/bin/kind
 ```
-Create a cluster and test the commands
+
 ```sh
 kind create cluster --name my-cluster
 ```
