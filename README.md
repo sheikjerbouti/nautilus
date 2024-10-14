@@ -1,5 +1,5 @@
 ![nautilus](images/output.jpg)
-
+<img src="images/output.jpg" alt="nautilus logo" width="300" height="200">
 =============
 
 # nautilus
