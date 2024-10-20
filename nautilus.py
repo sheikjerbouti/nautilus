@@ -43,13 +43,18 @@ class DescribeK8s:
         try:
             api_client = client.ApiClient()
             version_api = client.VersionApi(api_client)
-            api_versions = version_api.get_code()
+            try:
+                api_versions = version_api.get_code()
+            except Exception as e:
+                print(f"Error getting API versions: {e}")
+                return  
             print("Kubernetes API Versions:")
             print(f"Major: {api_versions.major}")
             print(f"Minor: {api_versions.minor}")
             print(f"Platform: {api_versions.platform}")
-        except client.ApiException as e:
+        except Exception as e:
             print(f"Error getting API versions: {e}")
+            return
             
     def get_kube_dns_info(self):
         try:
