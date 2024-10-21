@@ -49,6 +49,10 @@ options:
                         Print the cluster information
   --api-versions        Print the API versions
   --nodes               Print information about all nodes
+  --apply APPLY         Apply a configuration file
+  --create RESOURCE_TYPE NAME IMAGE
+                        Create a new resource (deployment or service)
+  --list-pods           List all pods in the current namespace
 ```
 ## Documentation and references
 
