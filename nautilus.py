@@ -207,20 +207,14 @@ def main():
     print("\n")
     
     
-    parser = argparse.ArgumentParser(
-        description="Describe Kubernetes cluster information")
-    parser.add_argument(
-        "--namespace", help="Set the namespace to get the information")
-    parser.add_argument("--cluster-info", "--cluster",
-                        help="Print the cluster information", action="store_true")
-    parser.add_argument(
-        "--api-versions", help="Print the API versions", action="store_true")
-    parser.add_argument(
-        "--nodes", help="Print information about all nodes", action="store_true")
-    parser.add_argument("--apply", help="Apply a configuration file")
-    parser.add_argument("--create", nargs=3, metavar=("RESOURCE_TYPE", "NAME", "IMAGE"),
-                        help="Create a new resource (deployment or service)")
-    parser.add_argument("--list-pods", help="List all pods in the current namespace", action="store_true")
+    parser = argparse.ArgumentParser(description="Kubernetes cluster tool")
+    parser.add_argument("--namespace", help="Set namespace")
+    parser.add_argument("--cluster-info", "--cluster", action="store_true", help="Show cluster info") 
+    parser.add_argument("--api-versions", action="store_true", help="Show API versions")
+    parser.add_argument("--nodes", action="store_true", help="Show node info")
+    parser.add_argument("--apply", help="Apply config file")
+    parser.add_argument("--create", nargs=3, metavar=("TYPE", "NAME", "IMAGE"), help="Create resource")
+    parser.add_argument("--list-pods", action="store_true", help="List pods")
 
 
     args = parser.parse_args()
