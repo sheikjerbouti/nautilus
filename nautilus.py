@@ -11,7 +11,7 @@ from termcolor import colored, cprint
 class DescribeK8s:
     def __init__(self, namespace):
         self.config = config.load_kube_config()    
-        #self.namespace = namespace
+        self.namespace = namespace
         self.v1 = client.CoreV1Api()
         
     def get_cluster_info(self):
@@ -87,6 +87,7 @@ class DescribeK8s:
 
 
     def print_nodes_info(self):
+        print(f"Listing nodes in namespace '{self.namespace}'")
         nodes = self.get_nodes()
         if nodes:
             print("Cluster Nodes:")
@@ -113,6 +114,7 @@ class DescribeK8s:
             return None
    
         pass
+    
     def apply(self, filename):
         """Apply a configuration file to create or update resources."""
         try:
@@ -149,7 +151,7 @@ class DescribeK8s:
                             print(f"Error applying {kind} '{name}': {e}")
         except Exception as e:
             print(f"Error applying configuration: {e}")
-
+    
     def create(self, resource_type, name, image=None, replicas=None):
         """Create a new resource."""
         try:
@@ -188,8 +190,17 @@ class DescribeK8s:
                 print(f"Unsupported resource type: {resource_type}")
         except client.ApiException as e:
             print(f"Error creating {resource_type}: {e}")
-
-
+            
+    def list_pods(self):
+        """List all pods in the current namespace."""
+        print(f"Listing pods in namespace '{self.namespace}'")  
+        try:
+            api_instance = client.CoreV1Api()
+            pod_list = api_instance.list_namespaced_pod(namespace=self.namespace)
+            print(pod_list)
+        except client.ApiException as e:
+            print(f"Exception when calling CoreV1Api->list_namespaced_pod: {e}")
+        
 def main():
     print("\n")
     print(colored("Nautilus - minimal Kubernetes CLI", "green"))    
@@ -209,6 +220,8 @@ def main():
     parser.add_argument("--apply", help="Apply a configuration file")
     parser.add_argument("--create", nargs=3, metavar=("RESOURCE_TYPE", "NAME", "IMAGE"),
                         help="Create a new resource (deployment or service)")
+    parser.add_argument("--list-pods", help="List all pods in the current namespace", action="store_true")
+
 
     args = parser.parse_args()
 
@@ -227,6 +240,12 @@ def main():
         k8s_cluster.print_api_versions()
     elif args.nodes:
         k8s_cluster.print_nodes_info()
+    elif args.list_pods:
+        k8s_cluster.list_pods()
+    elif args.apply:
+        k8s_cluster.apply(args.apply)
+    elif args.create:
+        k8s_cluster.create(args.create[0], args.create[1], args.create[2])  
     else:
         print("No arguments provided. Use --help for more information.")
 
