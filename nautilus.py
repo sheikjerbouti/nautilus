@@ -17,6 +17,9 @@ class DescribeK8s:
             exit(1)
         self.namespace = namespace
         self.v1 = client.CoreV1Api()
+        # Create the API client instance properly
+        self.api_client = client.ApiClient()
+        self.apps_v1 = client.AppsV1Api(self.api_client)
         
     def get_cluster_info(self):
         api_resources = self.get_api_resources()
