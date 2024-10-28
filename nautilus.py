@@ -10,7 +10,11 @@ from termcolor import colored, cprint
 
 class DescribeK8s:
     def __init__(self, namespace):
-        self.config = config.load_kube_config()    
+        try:
+            self.config = config.load_kube_config()
+        except Exception as e:
+            print(f"Error loading kubeconfig: {e}")
+            exit(1)
         self.namespace = namespace
         self.v1 = client.CoreV1Api()
         
