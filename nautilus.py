@@ -33,6 +33,28 @@ class DescribeK8s:
 
     def set_namespace(self, namespace):
         self.namespace = namespace
+        
+    def create_namespace(self,new_namespace):
+        """Create a new namespace in the Kubernetes cluster."""
+        try:
+            namespace = client.V1Namespace(
+                metadata=client.V1ObjectMeta(
+                    name=new_namespace
+                )
+            )
+            self.v1.create_namespace(namespace)
+            print(f"Namespace '{new_namespace}' created successfully")
+            return True
+        except client.ApiException as e:
+            if e.status == 409:
+                print(f"Namespace '{new_namespace}' already exists")
+            else:
+                print(f"Error creating namespace: {e}")
+            return False
+        except Exception as e:
+            print(f"Unexpected error creating namespace: {e}")
+            return False
+        
 
     def get_api_resources(self):
         """Get API resources information."""
@@ -216,6 +238,7 @@ def main():
     
     parser = argparse.ArgumentParser(description="Kubernetes cluster tool")
     parser.add_argument("--namespace", help="Set namespace")
+    parser.add_argument("--create-namespace",action="store_true", help="create a new namespace")
     parser.add_argument("--cluster-info", "--cluster", action="store_true", help="Show cluster info") 
     parser.add_argument("--api-versions", action="store_true", help="Show API versions")
     parser.add_argument("--nodes", action="store_true", help="Show node info")
@@ -234,7 +257,8 @@ def main():
 
     if args.namespace:
         k8s_cluster.set_namespace(args.namespace)
-
+    if args.create_namespace:
+        k8s_cluster.create_namespace(args.namespace)
     if args.cluster_info:
         k8s_cluster.get_cluster_info()
     elif args.api_versions:
