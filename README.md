@@ -1,6 +1,6 @@
 <img src="images/nautilus.jpg" alt="nautilus logo" width="200" height="200">
 
-# nautilus - Build your own kubectl like tool 
+# nautilus - Build your own Kubectl 
 
 Minimal command line interface "kubectl like" for interacting with Kubernetes clusters. A basic exercise for obtain a minimal console for interact with Kubernetes clusters and experimenting with basic operations ( create namespaces,deployments, services,load balancers). Re-creating technologies from scratch.
 
